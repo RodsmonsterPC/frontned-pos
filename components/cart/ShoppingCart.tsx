@@ -4,6 +4,7 @@ import { useStore } from "@/src/store"
 import ShoppingCartItem from "./ShoppingCartItem"
 import Amount from "./Amount"
 import CouponForm from "./CouponForm"
+import SubmitOrderForm from "./SubmitOrderForm"
 
 
 
@@ -43,6 +44,7 @@ const ShoppingCart = () => {
     </dl>
 
     <CouponForm/>
+    <SubmitOrderForm/>
     </>
    ): (
     <p className="text-xl text-center text-gray-900">El Carrito esta vacio</p>
