@@ -1,14 +1,14 @@
 import { Product } from "@/src/schemas";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath, isAvailable } from "@/src/utils";
 import Image from "next/image";
 import AddProduct from "./AddProduct";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="rounded bg-white shadow relative p-5">
-      <div>
+      <div className={`${!isAvailable(product.inventory) && "opacity-40"}`}>
         <Image
-          src={`${process.env.API_URL}/img/${product.image}`}
+          src={getImagePath(product.image)}
           alt={`Imagen de Producto ${product.name}`}
           width={400}
           height={600}
@@ -22,7 +22,14 @@ export default function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
       </div>
-     <AddProduct product={product}/>
+
+      {isAvailable(product.inventory) ? (
+        <AddProduct product={product} />
+      ) : (
+        <p className="avsolute top-1/2 left-1/2 transform -transalate-x-1/2 -translate-y-1/2 bg-white opacity-60 w-full text-center py-5 text-2xl uppercase font-black">
+          Agotado
+        </p>
+      )}
     </div>
   );
 }

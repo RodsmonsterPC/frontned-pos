@@ -1,4 +1,5 @@
 import { CategoriesResponseSchema, Product } from "@/src/schemas"
+import UploadProductImage from "./UploadProductImage"
 
 
 async function getCategories(){
@@ -80,7 +81,10 @@ export default async function ProductForm({product} : {product? : Product}) {
             ))}
           </select>
         </div>
-  
+            
+          <UploadProductImage
+          currentImage={product?.image}
+          />
       </>
     )
   }
