@@ -10,10 +10,11 @@ export default function CouponForm() {
         e.preventDefault()
 
         const formData = new FormData(e.currentTarget)
-        const couponName = formData.get('coupon_name')?.toString()!
-        if(!couponName.length) return
-
-        await appplyCoupon(couponName)
+        const rawCoupon = formData.get('coupon_name');
+        if (!rawCoupon || typeof rawCoupon !== 'string' || !rawCoupon.trim().length) return;
+        
+        const couponName = rawCoupon.trim(); // Ya es string y válido
+        await appplyCoupon(couponName);
     }
 
     return (

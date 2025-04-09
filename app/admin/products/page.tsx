@@ -15,7 +15,6 @@ async function getproducts(take: number, skip: number) {
 
   const data = ProductResponseSchema.parse(json);
 
-  console;
   return {
     products: data.products,
     total: data.total,

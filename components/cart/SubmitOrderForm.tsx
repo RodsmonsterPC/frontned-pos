@@ -29,7 +29,7 @@ const SubmitOrderForm = () => {
             toast.success(state.success)
             clearOrder()
         }
-    }, [state])
+    }, [state, clearOrder])
 
   return (
     <form

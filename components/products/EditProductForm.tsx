@@ -29,7 +29,7 @@ const EditProductForm =  ({children} : {children : React.ReactNode}) => {
             toast.success(state.success)
             router.push('/admin/products')
         }
-    }, [state])
+    }, [state, router])
 
   return (
     <form 
